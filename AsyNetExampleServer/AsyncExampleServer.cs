@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AsyNetExampleServer
+namespace HNet
 {
     internal class AsyncExampleServer
     {

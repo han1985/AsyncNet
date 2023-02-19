@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AsyncNet
+namespace HNet
 {
     public class AsyncNet
     {

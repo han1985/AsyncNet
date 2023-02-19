@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AsyncNet\AsyncNet.csproj">
+      <Project>{b040cc37-b8bf-4c5f-874a-95ea621eacfb}</Project>
+      <Name>AsyncNet</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
