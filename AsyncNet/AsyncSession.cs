@@ -75,7 +75,7 @@ namespace HNet
                     if(pack.headIndex < AsyncPackage.headLen)
                     {
                         skt.BeginReceive(pack.headBuff,pack.headIndex,AsyncPackage.headLen - pack.headIndex,SocketFlags.None,
-                            new AsyncCallback(RecvHeadData), pack);
+                            new AsyncCallback(RecvHeadData), pack );
                     }
                     else
                     {
