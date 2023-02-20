@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace HNet
 {
-    internal class AsycNetExampleClient
+    internal class AsycNetClientStart
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("clinet");
+           AsyncNetClient client = new AsyncNetClient();
+
+            client.StartClient("192.168.3.71", 17666);
+
+
             Console.ReadKey();
         }
     }

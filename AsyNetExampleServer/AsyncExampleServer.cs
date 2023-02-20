@@ -2,11 +2,12 @@
 
 namespace HNet
 {
-    internal class AsyncExampleServer
+    internal class AsyncServerStart
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           AsyncNetServer server = new AsyncNetServer();
+            server.StartServer("192.168.3.71",17666);
 
             Console.ReadKey();
         }
