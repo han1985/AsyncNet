@@ -25,5 +25,13 @@ namespace HNet
             bodyLen = BitConverter.ToInt32(headBuff, 0);
             bodyBuff= new byte[bodyLen];
         }
+
+        public void RessetData()
+        {
+            headIndex = 0;
+            bodyIndex= 0;
+            bodyBuff = null;
+            bodyIndex = 0;
+        }
     }
 }

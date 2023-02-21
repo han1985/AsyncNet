@@ -1,13 +1,70 @@
-﻿using System;
+﻿using HNetProtocal;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace HNet
 {
     public class AsyncTool
     {
-        public AsyncTool() { 
-        
+        public static byte[] PackLenInfo(byte[] data)
+        {
+            int len = data.Length;
+            byte[] result = new byte[len + 4];
+            byte[] head = BitConverter.GetBytes(len);
+            head.CopyTo(result, 0);
+            data.CopyTo(result, 4);
+            return result;
+        }
+
+        public static byte[] Serialize(AsyncMsg msg)
+        {
+            byte[] data = null;
+            MemoryStream ms = new MemoryStream();
+            BinaryFormatter bf = new BinaryFormatter();
+            try
+            {
+                bf.Serialize(ms, msg);
+                ms.Seek(0, SeekOrigin.Begin);
+                data = ms.ToArray();
+            }
+            catch (SerializationException ex)
+            {
+                ErrorLog($"error Serialize:{ex.Message}");
+            }
+            finally
+            {
+                ms.Close();
+            }
+
+            return data;
+        }
+
+        public static AsyncMsg  DeSerialize(byte[] bytes)
+        {
+            AsyncMsg data = null;
+            MemoryStream ms = new MemoryStream(bytes);
+            BinaryFormatter bf = new BinaryFormatter();
+            try
+            {
+                data = bf.Deserialize(ms) as AsyncMsg;
+
+            }
+            catch (SerializationException ex)
+            {
+                ErrorLog($"error DeSerialize:{ex.Message}");
+            }
+            finally
+            {
+                ms.Close();
+            }
+
+            return data;
         }
 
         public enum AsyncLogColor

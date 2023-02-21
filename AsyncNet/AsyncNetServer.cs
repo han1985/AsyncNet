@@ -13,6 +13,8 @@ namespace HNet
         List<AsyncSession> AsyncSessionList = null;
         public void StartServer(string ip, int port)
         {
+            AsyncSessionList = new List<AsyncSession>();
+
             try
             {
                 skt = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

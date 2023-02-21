@@ -9,8 +9,7 @@ namespace HNet
     public class AsyncNetClient
     {
         Socket skt = null;
-        AsyncSession session = null;
-
+        public AsyncSession session = null;
         public void StartClient(string ip, int port)
         {
             try
